@@ -31,4 +31,16 @@ RSpec.describe ItemsController, type: :controller do
       expect(Item.first).to eq(item1)
     end
   end
+
+  describe 'PUT #update' do
+    let!(:item) { Item.create(name: 'item', done: false, position: 1) }
+
+    before do
+      put :update, params: { id: item.id, item: { name: 'updated_item' } }
+    end
+
+    it 'modifies the item' do
+      expect(item.reload.name).to eq('updated_item')
+    end
+  end
 end

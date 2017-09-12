@@ -25,6 +25,14 @@ class ItemsController < ApplicationController
     head :no_content
   end
 
+  def update
+    if @item.update(item_params)
+      render json: @item, status: 200
+    else
+      render json: @item.errors, status: 422
+    end
+  end
+
   private
 
   def set_item

@@ -67,5 +67,22 @@ describe 'TODO Items API' do
         run_test!
       end
     end
+
+    # put 'Updates an item' do
+    #   tags 'Items'
+    #   produces 'application/json'
+    #   parameter name: :id, in: :path, type: :integer
+    #   parameter name: :item, in: :body, type: :object,
+    #             properties: {
+    #               name: { type: :string }
+    #             }
+
+    #   response '200', 'item updated' do
+    #     schema '$ref' => '#/definitions/item'
+    #     let!(:id) { Item.create(name: 'item1', done: false, position: 1).id }
+    #     let!(:item) { { name: 'item2' } }
+    #     run_test!
+    #   end
+    # end
   end
 end
