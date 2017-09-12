@@ -14,4 +14,21 @@ RSpec.describe ItemsController, type: :controller do
       expect(Item.count).to eq(items_before + 1)
     end
   end
+
+  describe 'DELETE #destroy' do
+    let!(:item1) { Item.create(name: 'item1', done: false, position: 1) }
+    let!(:item2) { Item.create(name: 'item2', done: false, position: 2) }
+
+    before do
+      delete :destroy, params: { id: item2.id }
+    end
+
+    it 'deletes one item' do
+      expect(Item.count).to eq(1)
+    end
+
+    it 'deletes the item' do
+      expect(Item.first).to eq(item1)
+    end
+  end
 end

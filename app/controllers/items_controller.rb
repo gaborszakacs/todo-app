@@ -20,6 +20,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item.destroy
+    head :no_content
+  end
+
+  private
+
   def set_item
     @item = Item.find(params[:id])
   end

@@ -56,5 +56,16 @@ describe 'TODO Items API' do
         run_test!
       end
     end
+
+    delete 'Deletes an item' do
+      tags 'Items'
+      produces 'application/json'
+      parameter name: :id, in: :path, type: :integer
+
+      response '204', 'item deleted' do
+        let!(:id) { Item.create(name: 'item1', done: false, position: 1).id }
+        run_test!
+      end
+    end
   end
 end
