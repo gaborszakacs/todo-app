@@ -1,4 +1,3 @@
-# spec/integration/blogs_spec.rb
 require 'swagger_helper'
 
 describe 'TODO Items API' do
@@ -12,6 +11,28 @@ describe 'TODO Items API' do
 
         let!(:item1) { Item.create(name: 'item1', done: false, position: 1) }
         let!(:item2) { Item.create(name: 'item2', done: false, position: 2) }
+        run_test!
+      end
+    end
+
+    post 'Creates an item' do
+      tags 'Items'
+      consumes 'application/json'
+      parameter name: :item, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        },
+        required: ['name']
+      }
+
+      response '201', 'item created' do
+        let!(:item) { { name: 'item1' } }
+        run_test!
+      end
+
+      response '400', 'invalid request' do
+        let!(:item) { {} }
         run_test!
       end
     end
