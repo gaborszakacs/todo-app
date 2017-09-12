@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 Metrics/BlockLength:
   Exclude:
     - 'spec/swagger_helper.rb'
+    - 'spec/integration/*.rb'
 
 AllCops:
   Exclude:
