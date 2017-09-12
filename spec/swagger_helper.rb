@@ -19,7 +19,22 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
-      paths: {}
+      definitions: {
+        items: {
+          type: :array,
+          items: { '$ref' => '#/definitions/item' }
+        },
+        item: {
+          type: :object,
+          properties: {
+            id: { type: :integer },
+            name: { type: :string },
+            done: { type: :boolean },
+            position: { type: :integer }
+          },
+          required: %w[id name done position]
+        }
+      }
     }
   }
 end

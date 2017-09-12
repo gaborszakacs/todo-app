@@ -1,0 +1,60 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "definitions": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/item"
+      }
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "done": {
+          "type": "boolean"
+        },
+        "position": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "done",
+        "position"
+      ]
+    }
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "Retrieves all TODO items",
+        "tags": [
+          "Items"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/stories"
+            }
+          }
+        }
+      }
+    }
+  }
+}
