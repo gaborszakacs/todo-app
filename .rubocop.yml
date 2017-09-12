@@ -5,7 +5,7 @@ Metrics/BlockLength:
     - 'spec/swagger_helper.rb'
 
 AllCops:
-  Excludes:
+  Exclude:
     - 'db/schema.rb'
 
 Documentation:
